@@ -40,7 +40,7 @@ class FileParser():
         elif format == 'csv':
             raise NotImplementedException
         elif format == 'ini':
-            raise NotImplementedException
+            self.__engine = IniParser()
         elif format == 'json':
             self.__engine = JsonParser()
         elif format == 'xml':
