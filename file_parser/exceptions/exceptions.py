@@ -38,7 +38,19 @@ Parsing exceptions
 '''
 
 class InvalidStringException(Exception):
-    message:str = "Invalid string exception"
+    message:str = "Input content is not a string"
     
+    def __init__(self):
+        super().__init__(self.message)
+
+class InvalidDictException(Exception):
+    message:str = "Input content is not a dict"
+    
+    def __init__(self):
+        super().__init__(self.message)
+
+class EmptyContentException(Exception):
+    message:str = "Input content is empty"
+
     def __init__(self):
         super().__init__(self.message)

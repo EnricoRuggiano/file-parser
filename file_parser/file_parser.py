@@ -1,6 +1,11 @@
 from .exceptions import *
 from .abstract import ParserInterface
 from .raw import RawParser
+from .json import JsonParser
+from .xml import XmlParser
+from .xlsx import XlsxParser
+from .ini import IniParser
+from .csv import CsvParser
 
 from os import access, R_OK
 from os.path import exists
@@ -37,7 +42,7 @@ class FileParser():
         elif format == 'ini':
             raise NotImplementedException
         elif format == 'json':
-            raise NotImplementedException
+            self.__engine = JsonParser()
         elif format == 'xml':
             raise NotImplementedException
         elif format == 'xlsx':
