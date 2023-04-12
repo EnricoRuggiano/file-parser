@@ -9,7 +9,7 @@ class ParserInterface():
     content:Mapping
 
     @abc.abstractmethod
-    def parse_input(self) -> Mapping:
+    def parse_input(self):
         ...
 
     @abc.abstractmethod

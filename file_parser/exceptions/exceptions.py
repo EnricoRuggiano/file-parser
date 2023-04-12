@@ -54,3 +54,14 @@ class EmptyContentException(Exception):
 
     def __init__(self):
         super().__init__(self.message)
+
+'''
+-----------------------------------------
+Headers exception
+'''
+
+class EmptyHeadersException(Exception):
+    message:str = "Empty headers"
+
+    def __init__(self):
+        super().__init__(self.message)

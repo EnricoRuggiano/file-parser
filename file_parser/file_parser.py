@@ -38,7 +38,7 @@ class FileParser():
         if format == 'raw':
             self.__engine = RawParser()
         elif format == 'csv':
-            raise NotImplementedException
+            self.__engine = CsvParser()
         elif format == 'ini':
             self.__engine = IniParser()
         elif format == 'json':
