@@ -17,8 +17,6 @@ class CsvParser(ParserInterface):
 
         f:StringIO = StringIO(self.raw_content)
         csv_file = csv.reader(f, delimiter=self.delimiter)
-        # if csv_file.line_num == 0:
-        #     raise EmptyContentException()
 
         # read csv file
         line:int = 1
@@ -41,14 +39,17 @@ class CsvParser(ParserInterface):
     @classmethod
     def __csv_to_dict(self, headers:List, content:List)->List[Mapping]:
         out:List[Mapping] = []
-        line:int = 2
+        line:int = 2            
         for x in content:
             d:Mapping = dict()
-            try:
-                for y in range(0, len(headers)):
-                    d[headers[y]] = x[y]
-                out.append(d)
-            except:
-                print("Impossible to parse line {}".format(line))
+            if not x:
+                pass
+            else:
+                try:                    
+                    for y in range(0, len(headers)):
+                        d[headers[y]] = x[y]
+                    out.append(d)
+                except:
+                    print("Impossible to parse line {}".format(line))
             line += 1
         return out
