@@ -10,7 +10,6 @@ from .csv import CsvParser
 from os import access, R_OK
 from os.path import exists
 from typing import Any, Mapping, Union
-from io import BytesIO
 
 class FileParser():
     input_path:str

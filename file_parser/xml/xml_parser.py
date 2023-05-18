@@ -5,6 +5,9 @@ from typing import Mapping
 from io import StringIO
 from io import BytesIO
 import json
+from os import access, R_OK
+from os.path import exists
+import os
 
 '''
 Take care there are a lot of vulnerability in the xml parsers
@@ -38,7 +41,10 @@ class XmlParser(ParserInterface):
         dom = parse(BytesIO(content), forbid_dtd=True, forbid_entities=True)
 
         # xslt
-        xslt = parse('xml2json.xslt', forbid_dtd=True, forbid_entities=True)
+        __this_dir:List[str] = os.path.realpath(__file__).split(os.sep)[:-1]
+        __this_dir:str = os.sep.join(__this_dir)
+        xslt_path = os.sep.join([__this_dir, 'xml2json.xslt'])        
+        xslt = parse(xslt_path, forbid_dtd=True, forbid_entities=True)
 
         # apply transformation
         transform = _etree.XSLT(xslt)
