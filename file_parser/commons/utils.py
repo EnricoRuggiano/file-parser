@@ -12,6 +12,12 @@ def check_is_str(elem:Any) -> bool:
     else:
         raise InvalidStringException
 
+def check_is_bytes(elem:Any) -> bool:
+    if type(elem) == bytes:
+        return True
+    else:
+        raise InvalidBytesException
+
 def check_is_dict(elem:Any) -> bool:
     if type(elem) == Mapping:
         return True

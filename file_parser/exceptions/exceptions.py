@@ -43,6 +43,12 @@ class InvalidStringException(Exception):
     def __init__(self):
         super().__init__(self.message)
 
+class InvalidBytesException(Exception):
+    message:str = "Input content is not bytes"
+
+    def __init__(self):
+        super().__init__(self.message)
+
 class InvalidDictException(Exception):
     message:str = "Input content is not a dict"
     

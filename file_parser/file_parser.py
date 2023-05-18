@@ -10,6 +10,7 @@ from .csv import CsvParser
 from os import access, R_OK
 from os.path import exists
 from typing import Any, Mapping, Union
+from io import BytesIO
 
 class FileParser():
     input_path:str
@@ -30,7 +31,14 @@ class FileParser():
 
         self.input_path = input_path
         f = open(input_path, 'r')
-        self.raw_content = f.read()
+        try:
+            self.raw_content = f.read()
+        except UnicodeDecodeError:
+            fb = open(input_path, 'rb')
+            self.raw_content = fb.read()
+            fb.close()
+            print("Warning: input file not utf-8. Using bytes")
+
         f.close()
 
     def parse(self, format:str) -> Mapping:
@@ -46,7 +54,7 @@ class FileParser():
         elif format == 'xml':
             raise NotImplementedException
         elif format == 'xlsx':
-            raise NotImplementedException
+            self.__engine = XlsxParser()
         else:
             raise NotSupportedFileException
 
