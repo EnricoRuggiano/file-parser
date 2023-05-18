@@ -71,3 +71,15 @@ class EmptyHeadersException(Exception):
 
     def __init__(self):
         super().__init__(self.message)
+
+
+'''
+-----------------------------------------
+Optional arguments exception
+'''
+
+class InvalidXmlConventionOptArgException(Exception):
+    message:str = "Invalid xml parsing convention"
+
+    def __init__(self):
+        super().__init__(self.message)

@@ -16,6 +16,8 @@ pluggy="*"
 tomli="*"
 XlsxWriter="*"
 openpyxl="*"
+defusedxml="*"
+lxml="*"
 
 [tool.poetry.dev-dependencies]
 coverage="*"

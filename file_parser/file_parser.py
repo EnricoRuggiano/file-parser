@@ -30,7 +30,17 @@ class FileParser():
             raise InputFileNotPermissionToReadException
 
         self.input_path = input_path
-        f = open(input_path, 'r')
+        
+        # print warning for xml
+        if input_path.endswith('.xml'):
+            warn_xml:str = """ Warning: .xml files may exploit vulnerabilities in the xml parsers to perform some malicious attack. 
+    Please be aware that your input '.xml' file comes from a trusted source."""
+
+            print(warn_xml)
+            f = open(input_path, 'rb')
+        else:
+            f = open(input_path, 'r')
+
         try:
             self.raw_content = f.read()
         except UnicodeDecodeError:
@@ -52,7 +62,7 @@ class FileParser():
         elif format == 'json':
             self.__engine = JsonParser()
         elif format == 'xml':
-            raise NotImplementedException
+            self.__engine = XmlParser()
         elif format == 'xlsx':
             self.__engine = XlsxParser()
         else:

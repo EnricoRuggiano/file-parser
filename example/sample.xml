@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmployerData>
+    <employee id="9012">
+        <firstName>Rachel</firstName>
+        <lastName>Booker</lastName>
+        <userName>booker12</userName>
+    </employee>
+    
+    <employee id="2070">
+        <firstName>Laura</firstName>
+        <lastName>Grey</lastName>
+        <userName>grey07</userName>
+    </employee>
+    
+    <employee id="4081">
+        <firstName>Craig</firstName>
+        <lastName>Johnson</lastName>
+        <userName>johnson81</userName>
+    </employee>
+    
+    <employee id="9346">
+        <firstName>Mary</firstName>
+        <lastName>Jenkins</lastName>
+        <userName>jenkins46</userName>
+    </employee>
+</EmployerData>
