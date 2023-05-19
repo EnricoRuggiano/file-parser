@@ -20,7 +20,8 @@ class XmlParser(ParserInterface):
     
     """
     Translating Xml to Json is not so simple and there are a lot of conventions. 
-    We use the Parker convention because it produces clean json but it ignores the xml attributes 
+    We use the Parker convention because it produces clean json but it ignores the xml attributes.
+    If you are curious, check here: http://wiki.open311.org/JSON_and_XML_Conversion/
     """
     convention = 'Parker'
 
