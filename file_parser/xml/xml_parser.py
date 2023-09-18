@@ -25,6 +25,10 @@ class XmlParser(ParserInterface):
     """
     convention = 'Parker'
 
+    def __init__(self, **kwargs):
+        if 'convention' in kwargs.keys():
+            self.convention = kwargs['convention']
+            
     def parse_input(self) -> Mapping:
         check_is_not_null(self.raw_content)
         check_is_bytes(self.raw_content)

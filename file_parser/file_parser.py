@@ -50,18 +50,18 @@ class FileParser():
 
         f.close()
 
-    def parse(self, format:str) -> Mapping:
+    def parse(self, format:str, **kwargs) -> Mapping:
         '''put here the implementation'''
         if format == 'raw':
             self.__engine = RawParser()
         elif format == 'csv':
-            self.__engine = CsvParser()
+            self.__engine = CsvParser(**kwargs)
         elif format == 'ini':
             self.__engine = IniParser()
         elif format == 'json':
             self.__engine = JsonParser()
         elif format == 'xml':
-            self.__engine = XmlParser()
+            self.__engine = XmlParser(**kwargs)
         elif format == 'xlsx':
             self.__engine = XlsxParser()
         else:

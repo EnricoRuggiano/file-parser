@@ -11,13 +11,20 @@ class CsvParser(ParserInterface):
     delimiter:str = ';'
     body:List[List[str]] = []
 
+    def __init__(self, **kwargs):
+        if 'delimiter' in kwargs.keys():
+            self.delimiter = kwargs['delimiter'] 
+
     def parse_input(self) -> List[Mapping]:
         check_is_not_null(self.raw_content)
         check_is_str(self.raw_content)
 
         f:StringIO = StringIO(self.raw_content)
         csv_file = csv.reader(f, delimiter=self.delimiter)
-
+        
+        # reset body
+        self.body = []
+        
         # read csv file
         line:int = 1
         for r in csv_file:

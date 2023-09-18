@@ -21,6 +21,9 @@ class XlsxParser(ParserInterface):
         # get the worksheet
         ws = xlsx_file.worksheets[self.worksheet_index]
 
+        # reset body
+        self.body = []
+        
         # get headers
         line:int = 1
         for y in range(1, ws.max_column+1):
