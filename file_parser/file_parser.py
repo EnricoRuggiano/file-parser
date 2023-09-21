@@ -29,7 +29,8 @@ class FileParser():
             raise InputFileNotPermissionToReadException
 
         self.input_path = input_path
-        
+        self.raw_content = ""
+
         # print warning for xml
         if input_path.endswith('.xml'):
             warn_xml:str = """ Warning: .xml files may exploit vulnerabilities in the xml parsers to perform some malicious attack. 
@@ -41,9 +42,11 @@ class FileParser():
             f = open(input_path, 'r')
 
         try:
+            f.seek(0)
             self.raw_content = f.read()
         except UnicodeDecodeError:
             fb = open(input_path, 'rb')
+            fb.seek(0)
             self.raw_content = fb.read()
             fb.close()
             print("Warning: input file not utf-8. Using bytes")

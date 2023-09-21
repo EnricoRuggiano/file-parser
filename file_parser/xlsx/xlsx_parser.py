@@ -21,12 +21,13 @@ class XlsxParser(ParserInterface):
         # get the worksheet
         ws = xlsx_file.worksheets[self.worksheet_index]
 
-        # reset body
+        # reset
         self.body = []
+        self.headers = []
         
         # get headers
         line:int = 1
-        for y in range(1, ws.max_column+1):
+        for y in range(1, ws.max_column + 1):
             self.headers.append(str(ws.cell(1, y).value).strip())
         line += 1
 
@@ -34,13 +35,14 @@ class XlsxParser(ParserInterface):
             raise EmptyHeadersException()
 
         # get data
-        for x in range(2, ws.max_row):
+        for x in range(2, ws.max_row + 1):
             r:List = []
             for y in range(1, ws.max_column + 1):
                 r.append(str(ws.cell(x, y).value).strip())
             self.body.append(r)
             line += 1
 
+        print(self.body)
         return self.__xlsx_to_dict(self.headers, self.body)
     
     def parse_output(self):
@@ -59,7 +61,8 @@ class XlsxParser(ParserInterface):
                     for y in range(0, len(headers)):
                         d[headers[y]] = x[y]
                     out.append(d)
-                except:
+                except Exception as e:
                     print("Impossible to parse line {}".format(line))
+                    print(e)
             line += 1
         return out

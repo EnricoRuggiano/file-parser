@@ -24,7 +24,8 @@ class CsvParser(ParserInterface):
         
         # reset body
         self.body = []
-        
+        self.headers = []
+     
         # read csv file
         line:int = 1
         for r in csv_file:
