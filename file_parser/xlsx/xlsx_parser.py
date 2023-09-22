@@ -42,7 +42,6 @@ class XlsxParser(ParserInterface):
             self.body.append(r)
             line += 1
 
-        print(self.body)
         return self.__xlsx_to_dict(self.headers, self.body)
     
     def parse_output(self):
