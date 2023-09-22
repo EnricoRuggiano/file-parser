@@ -9,4 +9,4 @@ endif
 build:
 	poetry build
 install:
-	python3 -m pip install ./dist/file_parser-1.0.0-py3-none-any.whl
+	python3.8 -m pip install ./dist/file_parser-1.0.0-py3-none-any.whl
