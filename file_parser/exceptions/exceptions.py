@@ -83,3 +83,16 @@ class InvalidXmlConventionOptArgException(Exception):
 
     def __init__(self):
         super().__init__(self.message)
+
+
+'''
+-----------------------------------------
+Output file exception
+'''
+
+class InvalidOutputExtension(Exception):
+
+    message:str = "Invalid output file extension. The output file must have the following extension: "
+
+    def __init__(self, ext='.txt'):
+        super().__init__(self.message + ext)        

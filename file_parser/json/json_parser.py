@@ -13,5 +13,6 @@ class JsonParser(ParserInterface):
 
         return json.loads(self.raw_content)
     
-    def parse_output(self):
-        pass
+    def parse_output(self, output_path:str, parsed_content, **kwargs):
+        with open(output_path, 'w') as f:
+            json.dump(parsed_content, f)

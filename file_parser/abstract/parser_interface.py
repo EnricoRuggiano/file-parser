@@ -13,5 +13,5 @@ class ParserInterface():
         ...
 
     @abc.abstractmethod
-    def parse_output(self):
+    def parse_output(self, output_path:str, parsed_content, **kwargs):
         ...

@@ -10,6 +10,7 @@ from .csv import CsvParser
 from os import access, R_OK
 from os.path import exists
 from typing import Any, Mapping, Union
+from .commons import *
 
 class FileParser():
     input_path:str
@@ -75,8 +76,30 @@ class FileParser():
         self.parsed_content = self.__engine.parse_input() # may throw exception
         return self.parsed_content
 
-    def write(self, output_path:str):
+    def write(self, format:str, output_path:str, **kwargs) -> str:
+        _content = kwargs.get('content') if kwargs.get('content') else self.parsed_content
+        check_is_not_null(_content)
+        check_extension_file(format, output_path)        
         self.output_path = output_path
+
+        if format == 'raw':
+            self.__engine = RawParser()
+        elif format == 'csv':
+            self.__engine = CsvParser(**kwargs)
+        elif format == 'ini':
+            self.__engine = IniParser()
+        elif format == 'json':
+            self.__engine = JsonParser()
+        elif format == 'xml':
+            self.__engine = XmlParser(**kwargs)
+        elif format == 'xlsx':
+            self.__engine = XlsxParser()
+        else:
+            raise NotSupportedFileException
+
+        self.__engine.parse_output(self.output_path, _content, **kwargs) # may throw exceptions
+        return self.output_path
+
 
     def __dict__(self) -> Mapping:
         return dict(

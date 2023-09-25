@@ -11,5 +11,5 @@ class RawParser(ParserInterface):
         check_is_str(self.raw_content)
         return dict(value=self.raw_content, format=self.format)
     
-    def parse_output(self):
-        pass
+    def parse_output(self, output_path:str, parsed_content, **kwargs):
+        raise NotImplementedError()        

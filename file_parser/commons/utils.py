@@ -23,3 +23,22 @@ def check_is_dict(elem:Any) -> bool:
         return True
     else:
         raise InvalidDictException
+    
+def check_extension_file(format:str, filename:str):
+    if format == 'raw':
+        ext = '.txt'
+    elif format == 'csv':
+        ext = '.csv'
+    elif format == 'ini':
+        ext = '.ini'
+    elif format == 'json':
+        ext = '.json'
+    elif format == 'xml':
+        ext = '.xml'
+    elif format == 'xlsx':
+        ext = '.xlsx'
+    else:
+        raise NotSupportedFileException()
+
+    if not filename.endswith(ext):
+        raise InvalidOutputExtension(ext=ext)

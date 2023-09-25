@@ -38,8 +38,8 @@ class XmlParser(ParserInterface):
         else:
             raise InvalidXmlConventionOptArgException()
     
-    def parse_output(self):
-        pass
+    def parse_output(self, output_path:str, parsed_content, **kwargs):
+        raise NotImplementedError()        
 
     @classmethod
     def __parker_parse(self, content:str)->Mapping:

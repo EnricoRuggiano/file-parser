@@ -44,8 +44,8 @@ class XlsxParser(ParserInterface):
 
         return self.__xlsx_to_dict(self.headers, self.body)
     
-    def parse_output(self):
-        pass
+    def parse_output(self, output_path:str, parsed_content, **kwargs):
+        raise NotImplementedError()        
 
     @classmethod
     def __xlsx_to_dict(self, headers:List, content:List)->List[Mapping]:

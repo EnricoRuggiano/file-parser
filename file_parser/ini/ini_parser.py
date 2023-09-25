@@ -25,8 +25,8 @@ class IniParser(ParserInterface):
 
         return out
     
-    def parse_output(self):
-        pass
+    def parse_output(self, output_path:str, parsed_content, **kwargs):
+        raise NotImplementedError()        
 
     @classmethod
     def __cfg_to_dict(self, cfg:ConfigParser)->Mapping:
