@@ -5,6 +5,8 @@ from typing import Mapping, List
 
 from io import StringIO
 import csv
+import subprocess
+import os
 
 class CsvParser(ParserInterface):      
     format:str = 'csv'
@@ -125,3 +127,10 @@ class CsvParser(ParserInterface):
         writer.writerow([_parsed_content])
 
         f.close()
+
+        # if it is windows call dos2unix on the file
+        if os.name == 'nt':
+            try:
+                subprocess.check_output(['dos2unix', output_path], stderr=subprocess.STDOUT)
+            except Exception:
+                print('Warning: failed to call dos2unix to convert the output csv file. The output file {} may have problems with new line characters in Windows'.format(output_path))
