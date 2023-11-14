@@ -66,6 +66,7 @@ Se sei interessato guarda pure altri esempi in `/example`
 ```
 from file_parser import FileParser
 from typing import Dict, List
+
 fp = FileParser()
 fp.read('data.xlsx')
 
